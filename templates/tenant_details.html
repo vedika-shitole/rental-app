@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<h2>Tenant Details</h2>
+
+<a href="/">⬅ Home</a>
+
+<div class="card">
+    <h2>{{tenant.name}}</h2>
+
+    <a href="/edit_tenant/{{tenant._id}}">
+    <button>✏ Edit Tenant</button>
+</a>
+
+<br><br>
+
+    <p><b>Phone:</b> {{tenant.phone}}</p>
+    <p><b>Rent:</b> ₹{{tenant.rent}}</p>
+    <p><b>Deposit:</b> ₹{{tenant.deposit}}</p>
+</div>
+
+<div class="card">
+    <h3>Agreement Details</h3>
+    <p>Start: {{tenant.agreement_start_date}}</p>
+    <p>End: {{tenant.agreement_end_date}}</p>
+    <p>Stayed After End: {{tenant.stayed_after_end}}</p>
+    <p>Rent Increased: {{tenant.rent_increased}}</p>
+</div>
+
+<div class="card">
+    <h3>Closing Info</h3>
+    <p>Left On: {{tenant.actual_end_date}}</p>
+
+    <br>
+
+    <a href="/close_tenant/{{tenant._id}}">
+        <button class="danger">❌ Close Tenant</button>
+    </a>
+</div>
+
+<div class="card">
+    <h3>Rent History</h3>
+
+    {% for r in rent_history %}
+    <div style="margin-bottom:10px;">
+        Month: {{r.month}}/{{r.year}} <br>
+        Amount: ₹{{r.amount}} <br>
+        Received By: {{r.received_by}}
+    </div>
+    {% endfor %}
+</div>

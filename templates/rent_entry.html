@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<h2>Rent Entry for Flat {{flat_id}}</h2>
+
+<form method="POST">
+    Month: <input name="month"><br>
+    Year: <input name="year"><br>
+    Amount: <input name="amount"><br>
+    Received By: <input name="received_by"><br>
+    Date: <input type="date" name="date"><br>
+    Late Penalty: <input name="penalty"><br>
+    Remarks: <input name="remarks"><br><br>
+
+    <button type="submit">Submit</button>
+</form>

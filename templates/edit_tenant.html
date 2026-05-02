@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+
+    <h2 style="text-align:center;">✏ Edit Tenant</h2>
+
+    <div class="card">
+        <form method="POST">
+
+            <!-- 🔒 NON-EDITABLE -->
+            <label>Name:</label><br>
+            <input value="{{tenant.name}}" disabled><br><br>
+
+            <label>Flat:</label><br>
+            <input value="{{tenant.flat_id}}" disabled><br><br>
+
+            <!-- ✅ EDITABLE -->
+            <label>Rent:</label><br>
+            <input name="rent" value="{{tenant.rent}}"><br><br>
+
+            <label>Deposit:</label><br>
+            <input name="deposit" value="{{tenant.deposit}}"><br><br>
+
+            <label>Phone:</label><br>
+            <input name="phone" value="{{tenant.phone}}"><br><br>
+
+            <label>Aadhaar:</label><br>
+            <input name="aadhaar" value="{{tenant.aadhaar}}"><br><br>
+
+            <label>PAN:</label><br>
+            <input name="pan" value="{{tenant.pan}}"><br><br>
+
+            <label>Agreement Start Date:</label><br>
+            <input type="date" name="start_date" value="{{tenant.agreement_start_date}}"><br><br>
+
+            <label>Agreement End Date:</label><br>
+            <input type="date" name="end_date" value="{{tenant.agreement_end_date}}"><br><br>
+
+            <label>Stayed After Agreement End:</label><br>
+            <select name="stayed">
+                <option value="no" {% if not tenant.stayed_after_end %}selected{% endif %}>No</option>
+                <option value="yes" {% if tenant.stayed_after_end %}selected{% endif %}>Yes</option>
+            </select><br><br>
+
+            <label>Rent Increased:</label><br>
+            <select name="increased">
+                <option value="no" {% if not tenant.rent_increased %}selected{% endif %}>No</option>
+                <option value="yes" {% if tenant.rent_increased %}selected{% endif %}>Yes</option>
+            </select><br><br>
+
+            <button type="submit">✅ Update Tenant</button>
+
+        </form>
+    </div>
+
+</div>

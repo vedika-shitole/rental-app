@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<h2>Close Tenant: {{tenant.name}}</h2>
+
+<form method="POST">
+
+    Leaving Date:
+    <input type="date" name="end_date"><br><br>
+
+    Damage:
+    <select name="damage">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select><br><br>
+
+    Deposit Returned:
+    <input name="deposit"><br><br>
+
+    Remarks:
+    <input name="remarks"><br><br>
+
+    <button type="submit">Close Tenant</button>
+
+</form>

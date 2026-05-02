@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<h2>Flat {{flat_id}} - Tenant History</h2>
+
+<a href="/">⬅ Back</a>
+
+<hr>
+
+{% for tenant in tenants %}
+<div style="border:1px solid black; padding:10px; margin:10px;">
+
+    <b>{{tenant.name}}</b><br>
+
+    {% if tenant.is_active %}
+        (Current Tenant)
+    {% else %}
+        (Past Tenant)
+    {% endif %}
+
+    <br><br>
+
+    <a href="/tenant/{{tenant._id}}">View Details</a>
+
+</div>
+{% endfor %}

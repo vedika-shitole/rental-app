@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<h2>Add Tenant for Flat {{flat_id}}</h2>
+
+<form method="POST">
+    Name: <input name="name"><br>
+    Rent: <input name="rent"><br>
+    Deposit: <input name="deposit"><br>
+    Phone: <input name="phone"><br>
+    Aadhaar: <input name="aadhaar"><br>
+    PAN: <input name="pan"><br><br>
+
+    Agreement Start: <input type="date" name="start_date"><br>
+    Agreement End: <input type="date" name="end_date"><br><br>
+
+    Stayed after agreement?
+    <select name="stayed">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select><br>
+
+    Rent increased?
+    <select name="increased">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select><br><br>
+
+    <button type="submit">Add Tenant</button>
+</form>

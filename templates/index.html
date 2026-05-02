@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="container">
+<h1>Dashboard</h1>
+
+<form method="POST">
+    Month: <input name="month" value="{{month}}">
+    Year: <input name="year" value="{{year}}">
+    <button type="submit">Load</button>
+</form>
+
+<div class="card">
+    <h3>📊 Dashboard</h3>
+
+    <p><b>Expected:</b> ₹{{dashboard.expected}}</p>
+    <p><b>Received:</b> ₹{{dashboard.received}}</p>
+    <p><b>Paid Flats:</b> {{dashboard.paid_flats}}</p>
+    <p><b>Pending:</b> {{dashboard.pending_flats}}</p>
+    <p><b>Empty Flats:</b> {{dashboard.empty_count}}</p>
+</div>
+
+<hr>
+
+<h2>Flats</h2>
+<div class=""flats">
+{% for flat in flats %}
+<div class="card">
+
+   <h3>
+    <a href="/flat/{{flat.flat_id}}">
+        Flat {{flat.flat_id}}
+    </a>
+
+    — {{flat.tenant_name if flat.tenant_name else "Vacant"}}
+
+    {% if flat.alert %}
+        <span style="color:red; font-size:13px; margin-left:10px;">
+            ⚠ Rent not updated after agreement
+        </span>
+    {% endif %}
+</h3>
+
+    <p>
+        {% if flat.current_tenant_id %}
+            <b>Status:</b> Occupied
+        {% else %}
+            <b>Status:</b> Vacant
+        {% endif %}
+    </p>
+
+    <a href="/add_tenant/{{flat.flat_id}}">
+        <button>➕ Add Tenant</button>
+    </a>
+
+    <a href="/rent/{{flat.flat_id}}">
+        <button>💰 Add Rent</button>
+    </a>
+
+    <form action="/empty/{{flat.flat_id}}" method="POST" style="display:inline;">
+        <input type="hidden" name="month" value="{{month}}">
+        <input type="hidden" name="year" value="{{year}}">
+        <button class="danger">Toggle Empty</button>
+    </form>
+
+</div>
+{% endfor %}
+</div>
+</div>
